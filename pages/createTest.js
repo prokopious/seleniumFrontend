@@ -25,7 +25,7 @@ export default function create() {
       payload: payload,
     };
     axios
-      .post("http://localhost:9596/api/test", details)
+      .post("https://aqueous-ravine-03366.herokuapp.com/api/test", details)
       .then((res) => {
         setResult(res.data);
         setUrl("");
@@ -34,7 +34,7 @@ export default function create() {
       })
 
       .catch((err) => {
-        console.log(err);
+        setResult(err);
       });
   };
 

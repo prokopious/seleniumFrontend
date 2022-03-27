@@ -2,16 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout2";
 import axios from "axios";
 
-
 export default function create() {
   const ref = useRef(null);
   const [animal, setAnimal] = useState("");
   const [description, setDescription] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [isError, setIsError] = useState([]);
-
-
 
   function refreshPage() {
     if (typeof window !== undefined) {
@@ -27,13 +23,14 @@ export default function create() {
       description: description,
     };
     axios
-      .post("http://localhost:9596/api/animals", details)
+      .post("https://aqueous-ravine-03366.herokuapp.com/api/animals", details)
       .then((res) => {
         setAnimal("");
         setDescription("");
         setLoading(false);
       })
-      .then(alert("Success!")).then(refreshPage())
+      .then(alert("Success!"))
+      .then(refreshPage())
       .catch((err) => {
         console.log(err);
       });
