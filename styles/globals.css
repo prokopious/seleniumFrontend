@@ -23,11 +23,11 @@ body {
 }
 .name {
   font-size: calc(16px + 0.2vw);
-  color: rgb(41, 41, 41);
+  color: rgb(116, 116, 116);
 }
 .title {
-  font-size: calc(16px + 0.2vw);
-  color: rgb(41, 41, 41);
+  font-size: calc(17px + 0.2vw);
+  color: rgb(0, 0, 0);
 }
 .heading {
   margin-bottom: 20px;

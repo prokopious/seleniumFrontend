@@ -2,56 +2,38 @@ import { useState } from "react";
 import Link from "next/link";
 import Layout from "../components/Layout2";
 
-export default function Home({ data }) {
-  const [filtered, setFiltered] = useState(
-    data.sort((a, b) => {
-      return a.createdAt > b.createdAt ? -1 : 1;
-    })
-  );
-  const [toggle, setToggle] = useState(true);
-
-  const filter = (e) => {
-    setFiltered(
-      data.filter((n) => {
-        return JSON.stringify(n).search(e.target.value) != -1;
-      })
-    );
-  };
-
-  const sortArray = () => {
-    setFiltered(
-      [...filtered].sort((a, b) => {
-        return b.createdAt + `${toggle ? ">" : "<"}` + a.createdAt ? -1 : 1;
-      })
-    );
-    setToggle(!toggle);
-  };
+export default function Home() {
   return (
     <>
       <Layout>
-        {data && (
-          <div id="grid">
-            <div id="all">
-              <h3 className="heading">All animals</h3>
-              <div id="in">
-                <button id="b" onClick={sortArray}>
-                  {toggle ? "oldest" : "newest"}
-                </button>
-                <input
-                  type="text"
-                  placeholder="filter by keyword.."
-                  onChange={(e) => filter(e)}
-                />
-              </div>
-            </div>
-            {filtered.map((item) => (
-              <div id={filtered.indexOf(item) % 2 === 0 ? "evenBox" : "oddBox"}>
-                <div className="title">{item.animal}</div>
-                <p className="notes">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <h3>Web App for Remote Testing Practice</h3>
+        <p>
+          This project consists of a server, a frontend, and a MySQL database.
+          The server is a Heroku Spring Boot Rest API for MySQL CRUD operations
+          with an additional endpoint for remotely running headless Selenium
+          tests via HtmlUnitDriver. The tests themselves are written remotely on
+          the client side (second site) and sent via POST request in the form of
+          an object containing both the URL of the site we're testing and the
+          Java test code itself. The code is evaluated serverside using
+          BeanShell and the result is then sent back and displayed to the
+          client. The MySQL live data is displayed{" "}
+          <Link href="/animals">
+            <a>here</a>
+          </Link>{" "}
+          for testing dynamic content, which is rendered serverside on every
+          request by Next.js.
+        </p>
+
+        <div id="z">
+          <Link href="https://github.com/prokopious/spring">
+            <a>Server repo</a>
+          </Link>
+        </div>
+        <div id="z">
+          <Link href="https://aqueous-ravine-03366.herokuapp.com/api/animals">
+            <a>REST endpoint</a>
+          </Link>
+        </div>
       </Layout>
       <style jsx>{`
         #b {
@@ -70,6 +52,9 @@ export default function Home({ data }) {
         .heading {
           padding-left: 20px;
         }
+        .notes {
+          color: #3B3B3B;
+        }
      
       `}</style>
     </>
@@ -77,7 +62,9 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`https://aqueous-ravine-03366.herokuapp.com/api/animals`);
+  const res = await fetch(
+    `https://aqueous-ravine-03366.herokuapp.com/api/animals`
+  );
   const data = await res.json();
   return { props: { data } };
 }

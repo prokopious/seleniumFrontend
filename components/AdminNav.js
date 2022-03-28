@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
-import jwt_decode from "jwt-decode";
-import router from "next/router";
+
 
 export default function AdminNav() {
   return (
@@ -11,7 +9,12 @@ export default function AdminNav() {
           <div id="linkGrid">
             <div id="z">
               <Link href="/">
-                <a>Main</a>
+                <a>Home</a>
+              </Link>
+            </div>
+            <div id="z">
+              <Link href="/animals">
+                <a>All</a>
               </Link>
             </div>
             <div id="z">
