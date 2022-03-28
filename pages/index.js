@@ -6,22 +6,23 @@ export default function Home() {
   return (
     <>
       <Layout>
-        <h3>Web App for Remote Testing Practice</h3>
+        <div id="dent">
+        <h3>Remote Selenium Test Playground</h3>
         <p>
           This project consists of a server, a frontend, and a MySQL database.
           The server is a Heroku Spring Boot Rest API for MySQL CRUD operations
-          with an additional endpoint for remotely running headless Selenium
-          tests via HtmlUnitDriver. The tests themselves are written remotely on
-          the client side (second site) and sent via POST request in the form of
-          an object containing both the URL of the site we're testing and the
-          Java test code itself. The code is evaluated serverside using
-          BeanShell and the result is then sent back and displayed to the
-          client. The MySQL live data is displayed{" "}
+          with an additional endpoint for running headless Selenium tests via
+          HtmlUnitDriver. The tests themselves are written remotely on the
+          client side (second site) and sent via POST request in the form of an
+          object containing both the URL of the site we're testing and the Java
+          test code itself. The code is evaluated serverside using BeanShell and
+          the result is then sent back and displayed to the client. The MySQL
+          live data is displayed{" "}
           <Link href="/animals">
             <a>here</a>
           </Link>{" "}
           for testing dynamic content, which is rendered serverside on every
-          request by Next.js.
+          request by Next.js. 
         </p>
 
         <div id="z">
@@ -33,7 +34,7 @@ export default function Home() {
           <Link href="https://aqueous-ravine-03366.herokuapp.com/api/animals">
             <a>REST endpoint</a>
           </Link>
-        </div>
+        </div></div>
       </Layout>
       <style jsx>{`
         #b {
@@ -54,6 +55,9 @@ export default function Home() {
         }
         .notes {
           color: #3B3B3B;
+        }
+        #dent {
+          margin-left: 10px;
         }
      
       `}</style>
