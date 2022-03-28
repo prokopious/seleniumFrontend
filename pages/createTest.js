@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout2";
 import axios from "axios";
+import Link from 'next/link'
 
 export default function create() {
   const ref = useRef(null);
-  const [url, setUrl] = useState("");
-  const [payload, setPayload] = useState("");
+  const [url, setUrl] = useState("https://www.estes-express.com/");
+  const [payload, setPayload] = useState("driver.getTitle();");
   const [result, setResult] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -28,8 +29,6 @@ export default function create() {
       .post("https://aqueous-ravine-03366.herokuapp.com/api/test", details)
       .then((res) => {
         setResult(res.data);
-        setUrl("");
-        setPayload("");
         setLoading(false);
       })
 
@@ -41,8 +40,38 @@ export default function create() {
   return (
     <>
       <Layout>
-        <div id="frame">
-          <div className="heading">Run a test</div>
+      <div id="dent">
+        <h3>Remote Selenium Test Playground</h3>
+        <p>
+          This project consists of a server, a frontend, and a MySQL database.
+          The server is a Heroku Spring Boot Rest API for MySQL CRUD operations
+          with an additional endpoint for running headless Selenium tests via
+          HtmlUnitDriver. The tests themselves are written remotely
+          below and sent via POST request in the form of an
+          object containing both the URL of the site we're testing and the Java
+          test code itself. The code is evaluated serverside using BeanShell and
+          the result is then sent back and displayed to the client. The MySQL
+          live data is a list of animals and is displayed{" "}
+          <Link href="/animals">
+            <a>here</a>
+          </Link>{" "}
+          for testing dynamic content. I used Next.js to dynamically render the data. A form is provided  <Link href="/createAnimal">
+            <a>here</a>
+          </Link> for adding new animals to the database. 
+        </p>
+
+        <div id="z">
+          <Link href="https://github.com/prokopious/spring">
+            <a>Server repo</a>
+          </Link>
+        </div>
+        <div id="z">
+          <Link href="https://aqueous-ravine-03366.herokuapp.com/api/animals">
+            <a>REST endpoint</a>
+          </Link>
+        </div>
+        <div>
+          <div className="run">Run a test</div>
           <p>
             Enter the url for the site you'd like to test. The driver will be
             initialized serverside, so you can immediately just use it as seen
@@ -54,17 +83,14 @@ export default function create() {
               type="text"
               id="url"
               className="paragraph"
-              placeholder="https://toddhuyett.com/..."
               value={url}
               onChange={(e) => setUrl(e.target.value)}
             />
           </div>
           <div className="form-group">
-            <input
-              type="text"
+            <textarea
               id="payload"
-              className="paragraph"
-              placeholder="driver.getTitle(); driver.getCurrentUrl();"
+              className="paragraph2"
               value={payload}
               onChange={(e) => setPayload(e.target.value)}
             />
@@ -82,11 +108,33 @@ export default function create() {
           >
             {loading ? "Loading..." : "Submit"}
           </button>
-          <h3>Result:</h3>
-          <div>{result}</div>
-        </div>
+          <h3 id="n">Result:</h3>
+          <div id="r">{result}</div>
+        </div></div>
       </Layout>
       <style jsx>{`
+      #b {
+          margin-right: 5px;
+          width: 70px;
+        }
+        #h44 {
+          padding-left 20px;
+        }
+        #oddBox {
+          padding: 20px;
+        }
+        .email {
+          margin-top: 5px;
+        }
+        .heading {
+          padding-left: 20px;
+        }
+        .notes {
+          color: #3B3B3B;
+        }
+        #dent {
+          margin-left: 10px;
+        }
         #h {
           margin-top: 4px;
           padding-top: 0px;
@@ -120,6 +168,10 @@ export default function create() {
           width: 70px;
           vertical-align: middle;
         }
+        .run {
+          font-size: 24px;
+      margin-top: 30px;
+        }
         .paragraph2 {
           width: 700px;
           margin-top: 2px;
@@ -133,6 +185,13 @@ export default function create() {
         }
         #frame {
           padding-left: 20px;
+        }
+        #n {
+          padding-left: 8px;
+        }
+        #r {
+          padding-bottom: 200px;
+      padding-left: 8px;
         }
       `}</style>
     </>

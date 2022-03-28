@@ -12,17 +12,18 @@ export default function Home() {
           This project consists of a server, a frontend, and a MySQL database.
           The server is a Heroku Spring Boot Rest API for MySQL CRUD operations
           with an additional endpoint for running headless Selenium tests via
-          HtmlUnitDriver. The tests themselves are written remotely on the
-          client side (second site) and sent via POST request in the form of an
+          HtmlUnitDriver. The tests themselves are written remotely <Link href="/createTest">
+            <a>here</a></Link> (this site) and sent via POST request in the form of an
           object containing both the URL of the site we're testing and the Java
           test code itself. The code is evaluated serverside using BeanShell and
           the result is then sent back and displayed to the client. The MySQL
-          live data is displayed{" "}
+          live data is a list of animals and is displayed{" "}
           <Link href="/animals">
             <a>here</a>
           </Link>{" "}
-          for testing dynamic content, which is rendered serverside on every
-          request by Next.js. 
+          for testing dynamic content. I used Next.js to dynamically render the data. A form is provided  <Link href="/createAnimal">
+            <a>here</a>
+          </Link> for adding new animals to the database. 
         </p>
 
         <div id="z">
