@@ -41,17 +41,17 @@ export default function Home() {
     <>
       <Layout>
         <div id="dent">
-          <h3>Remote Selenium Test Playground</h3>
+          <h3>Remote Selenium Testing Playground</h3>
           <p>
             This project consists of a server, a frontend, and a MySQL database.
             The server is a Heroku Spring Boot Rest API for MySQL CRUD
             operations with an additional endpoint for running headless Selenium
             tests via HtmlUnitDriver. The tests themselves are written remotely
-            below and sent via POST request in the form of an object containing
-            both the URL of the site we're testing and the Java test code
-            itself. The code is evaluated serverside using BeanShell and the
-            result is then sent back and displayed to the client. The MySQL live
-            data is a list of animals and is displayed{" "}
+            in the form below and sent in a POST request containing both the
+            website url and the test code. The code is evaluated serverside
+            using BeanShell and the result is then sent back and displayed to
+            the client. The MySQL live data is a list of animals and is
+            displayed{" "}
             <Link href="/animals">
               <a>here</a>
             </Link>{" "}
