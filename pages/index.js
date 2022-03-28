@@ -78,8 +78,9 @@ export default function Home() {
             <p>
               Enter the url for the site you'd like to test. The driver will be
               initialized serverside, so you can immediately just use it as seen
-              in the placeholder text below. Please do not omit the semicolon
-              between lines in your test code.
+              in the placeholder text below. You can just hit submit for a quick
+              demo or try writing your own code. Please do not omit the
+              semicolon between lines in your test code.
             </p>
             <div>
               <input
